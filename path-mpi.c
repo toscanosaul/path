@@ -41,7 +41,7 @@
  */
 
 int square(int n,int rank, int np,               // Number of nodes
-           int* restrict l, int *restric lold                   )
+           int* restrict l, int *restrict lold)
 {
     int done = 1;
     int i,j,k;
