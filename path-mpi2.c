@@ -54,7 +54,7 @@ int square(int n,int rank, int np,               // Number of nodes
     
 
     
-    memcpy(lold, l, size1*n * sizeof(int));
+   // memcpy(lold, l, size1*n * sizeof(int));
     
     
     for (k = 0; k < n; ++k) {
@@ -68,10 +68,10 @@ int square(int n,int rank, int np,               // Number of nodes
         MPI_Bcast (tmp, n, MPI_INT, root, MPI_COMM_WORLD);
 
         for (j = 0; j < size1; ++j) {
-            int lkj = lold[j*n+k];
+            int lkj = l[j*n+k];
             int lij;
             for (i = 0; i < n; ++i) {
-                lij = lold[j*n+i];
+                lij = l[j*n+i];
                 int lik = tmp[i];
                 if (lik + lkj < lij) {
                     l[j*n+i] = lik+lkj;
@@ -81,7 +81,7 @@ int square(int n,int rank, int np,               // Number of nodes
         }
     }
     free(tmp);
-    free(lold);
+  //  free(lold);
     return done;
 }
 
